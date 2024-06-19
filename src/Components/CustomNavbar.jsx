@@ -13,7 +13,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
 } from 'reactstrap';
 
 function CustomNavbar() {
@@ -38,16 +37,16 @@ function CustomNavbar() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/components/">Store</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
+                About
               </NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+                Contact Us
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>Option 1</DropdownItem>
@@ -57,7 +56,14 @@ function CustomNavbar() {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+          <Nav>
+            <NavItem>
+              <NavLink href='/signup'>Sign Up</NavLink>
+            </NavItem>
+            <NavItem>
+            <NavLink href='/login'>Log In</NavLink>
+            </NavItem>
+          </Nav>
         </Collapse>
       </Navbar>
     </div>
