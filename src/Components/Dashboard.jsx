@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getCurrentUser, logout } from "./Auth";
+import { checkLogin, getCurrentUser, logout } from "./Auth";
 import { Button } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -21,8 +21,14 @@ function Dashboard() {
 
   return (
     <div>
-      <h1>{user.name}</h1>
-      <Button onClick={()=>logoutClick()}>Log out</Button>
+      {
+        (checkLogin())?
+        <div>
+          <h1>{user.name}</h1>
+        <Button onClick={()=>logoutClick()}>Log out</Button>
+        </div>
+        : <Navigate to="/login"/>
+      }
     </div>
   );
 }

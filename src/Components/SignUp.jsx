@@ -14,8 +14,11 @@ import {
   Row,
 } from "reactstrap";
 import { createUser } from "./UserService";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -57,6 +60,7 @@ function SignUp() {
     createUser(user).then(data=>{
       alert("sign up done");
       console.log(data);
+      navigate("/login")
     }).catch(e=>{
       alert("error");
       console.log(e);

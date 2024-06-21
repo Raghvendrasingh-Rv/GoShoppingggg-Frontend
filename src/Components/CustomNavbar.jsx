@@ -14,8 +14,16 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { checkLogin, logout, getCurrentUser } from './Auth';
+import { useNavigate } from 'react-router-dom';
 
 function CustomNavbar() {
+  const navigate = useNavigate();
+  const logoutClick = () => {
+    console.log("logout");
+    logout();
+    navigate("/login");
+  };
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -48,7 +56,7 @@ function CustomNavbar() {
               <DropdownToggle nav caret>
                 Contact Us
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem>Option 1</DropdownItem>
                 <DropdownItem>Option 2</DropdownItem>
                 <DropdownItem divider />
@@ -56,14 +64,21 @@ function CustomNavbar() {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <Nav>
+          {(!checkLogin())?<Nav>
             <NavItem>
               <NavLink href='/signup'>Sign Up</NavLink>
             </NavItem>
             <NavItem>
             <NavLink href='/login'>Log In</NavLink>
             </NavItem>
-          </Nav>
+          </Nav>:<Nav>
+            <NavItem>
+              <NavLink href='/dashboard'>{getCurrentUser().name}</NavLink>
+            </NavItem>
+            <NavItem>
+            <NavLink onClick={logoutClick}>Log out</NavLink>
+            </NavItem>
+          </Nav>}
         </Collapse>
       </Navbar>
     </div>
