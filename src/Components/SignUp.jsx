@@ -13,6 +13,7 @@ import {
   Label,
   Row,
 } from "reactstrap";
+import { createUser } from "./UserService";
 
 function SignUp() {
   const [user, setUser] = useState({
@@ -32,8 +33,35 @@ function SignUp() {
   const onFieldSubmit = (event) => {
     event.preventDefault();
     if (user.name.trim() === "") {
+      alert("Name is required");
     }
-    console.log(event);
+    if (user.email.trim() === "") {
+      alert("Name is required");
+    }
+    if (user.password.trim() === "") {
+      alert("Name is required");
+    }
+    if (user.phone.trim() === ""||user.phone.trim()<1000000000) {
+      alert("Name is required");
+    }
+    if (user.address.trim() === "") {
+      alert("Name is required");
+    }
+    if (user.gender.trim() === "") {
+      alert("Name is required");
+    }
+    if (user.about.trim() === "") {
+      alert("Name is required");
+    }
+
+    createUser(user).then(data=>{
+      alert("sign up done");
+      console.log(data);
+    }).catch(e=>{
+      alert("error");
+      console.log(e);
+    })
+
   };
 
   // const onFieldReset = ()=>{
@@ -51,7 +79,7 @@ function SignUp() {
             <CardBody>
               <Form onSubmit={onFieldSubmit}>
                 <FormGroup style={{ textAlign: "left" }}>
-                  <Label for="name">Name</Label>
+                  <Label for="name">Name</Label><b><Label style={{color:'red'}}>*</Label></b>
                   <Input
                     type="text"
                     placeholder="Enter your name"
@@ -72,6 +100,7 @@ function SignUp() {
                     value={user.email}
                     onChange={(event) => onFieldChange(event, "email")}
                   ></Input>
+                  {user.email?"":<span style={{color:'red',marginLeft:'10px', marginTop:'0px'}}>Name is required</span>}
                 </FormGroup>
                 <FormGroup style={{ textAlign: "left" }}>
                   <Label for="password">Password</Label>
@@ -83,6 +112,7 @@ function SignUp() {
                     value={user.password}
                     onChange={(event) => onFieldChange(event, "password")}
                   ></Input>
+                  {user.password?"":<span style={{color:'red',marginLeft:'10px', marginTop:'0px'}}>Name is required</span>}
                 </FormGroup>
                 <FormGroup style={{ textAlign: "left" }}>
                   <Label for="phone">Mobile Number</Label>
@@ -94,6 +124,7 @@ function SignUp() {
                     value={user.phone}
                     onChange={(event) => onFieldChange(event, "phone")}
                   ></Input>
+                  {user.phone?"":<span style={{color:'red',marginLeft:'10px', marginTop:'0px'}}>Name is required</span>}
                 </FormGroup>
                 <FormGroup style={{ textAlign: "left" }}>
                   <Label for="gender">Gender</Label>
@@ -107,6 +138,7 @@ function SignUp() {
                     <option>Male</option>
                     <option>Female</option>
                   </Input>
+                  {user.gender?"":<span style={{color:'red',marginLeft:'10px', marginTop:'0px'}}>Name is required</span>}
                 </FormGroup>
                 <FormGroup style={{ textAlign: "left" }}>
                   <Label for="password">Address</Label>
@@ -118,6 +150,7 @@ function SignUp() {
                     value={user.address}
                     onChange={(event) => onFieldChange(event, "address")}
                   ></Input>
+                  {user.address?"":<span style={{color:'red',marginLeft:'10px', marginTop:'0px'}}>Name is required</span>}
                 </FormGroup>
                 <FormGroup style={{ textAlign: "left" }}>
                   <Label for="about">About</Label>
@@ -129,6 +162,7 @@ function SignUp() {
                     value={user.about}
                     onChange={(event) => onFieldChange(event, "about")}
                   ></Input>
+                  {user.about?"":<span style={{color:'red',marginLeft:'10px', marginTop:'0px'}}>Name is required</span>}
                 </FormGroup>
                 <CardFooter>
                   <Button>Submit</Button>
