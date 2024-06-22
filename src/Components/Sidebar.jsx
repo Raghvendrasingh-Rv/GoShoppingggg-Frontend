@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Slider.css'
 import { ListGroup, ListGroupItem } from 'reactstrap'
-import { loadCategory } from './Service/categoryService'
+import { loadCategory} from './Service/categoryService'
 
-function Sidebar() {
+function Sidebar({onButtonClick}) {
 
   const [category, setCategory] = useState([]);
 
@@ -18,6 +18,13 @@ function Sidebar() {
     // eslint-disable-next-line
   },[])
 
+
+  const handleClick = (id) => {
+    const value = id; // Replace with the actual value you want to pass
+    onButtonClick(value);
+  };
+
+
   if (!category) return <div>Loading...</div>;
 
   return (
@@ -29,9 +36,10 @@ function Sidebar() {
       <div className="center"></div>
       <div className="title">
           <ListGroup>
+          <ListGroupItem onClick={()=>handleClick(0)}>All</ListGroupItem>
           {
               category.map((cat)=>(
-                <ListGroupItem key={cat.category_id}>{cat.title}</ListGroupItem>
+                <ListGroupItem key={cat.category_id} onClick={()=>handleClick(cat.category_id)}>{cat.title}</ListGroupItem>
               ))
             }
           </ListGroup>
