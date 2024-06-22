@@ -10,6 +10,7 @@ import LogIn from "./Components/LogIn";
 import { ToastContainer} from "react-toastify";
 import Dashboard from "./Components/Dashboard";
 import Store from "./Components/Store";
+import Cart from "./Components/Cart";
 // import PrivateRoute from "./Components/PrivateRoute";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<LogIn/>}></Route>
         <Route path='/dashboard' element={<Dashboard/>}></Route>
         <Route path='/store' element={<Store/>}></Route>
+        <Route path='/cart' element={<Cart/>}></Route>
 
         {/* <Route path="/user" element={<PrivateRoute/>}>
           <Route path="/dashboard" element={<Dashboard/>} />

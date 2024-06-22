@@ -73,7 +73,10 @@ function CustomNavbar() {
             </NavItem>
           </Nav>:<Nav>
             <NavItem>
-              <NavLink href='/dashboard'>{getCurrentUser().name}</NavLink>
+              <NavLink href='/cart'>Cart</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='/dashboard'>Hello, {getCurrentUser().name}</NavLink>
             </NavItem>
             <NavItem>
             <NavLink onClick={logoutClick}>Log out</NavLink>
