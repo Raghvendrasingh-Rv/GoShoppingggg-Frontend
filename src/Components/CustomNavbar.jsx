@@ -45,7 +45,7 @@ function CustomNavbar() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Store</NavLink>
+              <NavLink href="/store">Store</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">

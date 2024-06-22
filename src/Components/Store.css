@@ -1,0 +1,10 @@
+.store{
+  background-color: darkgray;
+  display: flex;
+}
+
+.storeContainer{
+  flex: 6;
+  margin-top: 10px;
+  display: flex;
+}
